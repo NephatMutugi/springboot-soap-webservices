@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @ Author NMuchiri
  **/
-@Slf4j
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

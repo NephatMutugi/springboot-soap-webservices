@@ -6,7 +6,10 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.kcbgroup.main.entities.CourseDetails;
 import com.kcbgroup.main.entities.GetCourseDetailsRequest;
 import com.kcbgroup.main.entities.GetCourseDetailsResponse;
+import com.kcbgroup.main.service.CourseDetailsService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -18,7 +21,11 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
  **/
 @Endpoint
 @Slf4j
+@RequiredArgsConstructor
 public class CourseDetailsEndpoint {
+    /*                      GLOBAL VARIABLES                 */
+
+    final CourseDetailsService service;
 
     /* Set payload root by giving the namespace and element name defined in the xsd*/
     @PayloadRoot(namespace = "http://in28minutes.com/courses", localPart = "GetCourseDetailsRequest")
