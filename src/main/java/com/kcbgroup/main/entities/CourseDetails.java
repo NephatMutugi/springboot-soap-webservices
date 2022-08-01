@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlType;
 @Data
 public class CourseDetails {
 
-    protected long id;
+    protected Integer id;
     @XmlElement(required = true)
     protected String name;
     @XmlElement(required = true)

@@ -9,7 +9,7 @@
     <xs:element name="GetCourseDetailsRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element type="xs:long" name="id"/>
+                <xs:element type="xs:integer" name="id"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -27,7 +27,7 @@
     </xs:element>
     <xs:complexType name="CourseDetails">
         <xs:sequence>
-            <xs:element name="id" type="xs:long"/>
+            <xs:element name="id" type="xs:integer"/>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="description" type="xs:string"/>
         </xs:sequence>

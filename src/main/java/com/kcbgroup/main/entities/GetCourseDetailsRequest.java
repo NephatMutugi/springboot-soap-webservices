@@ -43,6 +43,6 @@ import javax.xml.bind.annotation.XmlType;
 @Data
 public class GetCourseDetailsRequest {
 
-    protected long id;
+    protected Integer id;
 
 }
