@@ -2,7 +2,7 @@ package com.kcbgroup.main.service;
 
 import com.kcbgroup.main.entities.Course;
 import com.kcbgroup.main.exceptions.UserNotFoundException;
-import com.kcbgroup.main.repo.CourseRepo;
+import com.kcbgroup.main.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -22,7 +22,8 @@ public class CourseDetailsService implements CourseDetailsInterface{
     /*                      GLOBAL VARIABLES                                  */
 
 
-    CourseRepo courseRepo;
+
+    final CourseRepository courseRepo;
 
     // Get details given ID
     public ResponseEntity<Course> findById(int id){
