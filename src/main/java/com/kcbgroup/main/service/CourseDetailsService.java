@@ -25,10 +25,11 @@ public class CourseDetailsService implements CourseDetailsInterface{
     CourseRepo courseRepo;
 
     // Get details given ID
-    public Course findById(int id){
+    public ResponseEntity<Course> findById(int id){
         Optional<Course> optionalCourse = courseRepo.findById(id);
         if (optionalCourse.isPresent()){
-            return optionalCourse.get();
+             Course course = optionalCourse.get();
+             return new ResponseEntity<>(course, HttpStatus.OK);
         } else {
             throw new UserNotFoundException("User with id" + id +" not found.");
         }
@@ -36,8 +37,8 @@ public class CourseDetailsService implements CourseDetailsInterface{
 
 
     // Get all courses details
-    public List<Course> getAllCourses(){
-        return courseRepo.findAll();
+    public ResponseEntity<List<Course>> getAllCourses(){
+        return new ResponseEntity<>(courseRepo.findAll(), HttpStatus.OK);
     }
 
     // Delete a course
