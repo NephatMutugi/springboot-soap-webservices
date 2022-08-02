@@ -15,6 +15,5 @@ public interface CourseDetailsInterface {
     List<Course> getAllCourses();
 
     // Delete a course
-
     ResponseEntity<?> deleteCourse(int id);
 }
