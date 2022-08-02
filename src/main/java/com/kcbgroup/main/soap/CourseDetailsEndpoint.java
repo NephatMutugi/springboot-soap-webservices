@@ -41,6 +41,7 @@ public class CourseDetailsEndpoint {
         courseDetails.setId(request.getId());
         courseDetails.setName("Computer Science");
         courseDetails.setDescription("This is the only course you will need");
+        response.setCourseDetails(courseDetails);
 
 
         /*  Object to json converter */
@@ -60,7 +61,7 @@ public class CourseDetailsEndpoint {
         try {
             ObjectWriter resp = new ObjectMapper().writer().withDefaultPrettyPrinter();
             String logResp = resp.writeValueAsString(response);
-            log.info("Response: {}", response);
+            log.info("Response: {}", logResp);
 
         } catch (JsonProcessingException e) {
             String errorMessage = e.getMessage();

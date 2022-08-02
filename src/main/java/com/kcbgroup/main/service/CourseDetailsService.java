@@ -5,20 +5,24 @@ import com.kcbgroup.main.exceptions.UserNotFoundException;
 import com.kcbgroup.main.repo.CourseRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
  * @ Author NMuchiri
  **/
-@Component
+@Service
 @Slf4j
 @RequiredArgsConstructor
-public class CourseDetailsService {
+public class CourseDetailsService implements CourseDetailsInterface{
     /*                      GLOBAL VARIABLES                                  */
 
-    final CourseRepo courseRepo;
+
+    CourseRepo courseRepo;
 
     // Get details given ID
     public Course findById(int id){
@@ -32,6 +36,19 @@ public class CourseDetailsService {
 
 
     // Get all courses details
+    public List<Course> getAllCourses(){
+        return courseRepo.findAll();
+    }
 
     // Delete a course
+
+    public ResponseEntity<?> deleteCourse(int id){
+        Optional<Course> optionalCourse = courseRepo.findById(id);
+        if (optionalCourse.isPresent()){
+            courseRepo.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
