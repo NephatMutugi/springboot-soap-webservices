@@ -1,6 +1,6 @@
 package com.kcbgroup.main.service;
 
-import com.kcbgroup.main.entities.Course;
+import com.kcbgroup.main.soap.bean.Course;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
