@@ -9,11 +9,11 @@ import java.util.List;
  * @ Author NMuchiri
  **/
 public interface CourseDetailsInterface {
-    ResponseEntity<Course> findById(int id);
+    ResponseEntity<Course> findById(Integer id);
 
     // Get all courses details
     ResponseEntity<List<Course>> getAllCourses();
 
     // Delete a course
-    ResponseEntity<?> deleteCourse(int id);
+    ResponseEntity<?> deleteCourse(Integer id);
 }

@@ -3,11 +3,11 @@ package com.kcbgroup.main.service;
 import com.kcbgroup.main.entities.Course;
 import com.kcbgroup.main.exceptions.UserNotFoundException;
 import com.kcbgroup.main.repository.CourseRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,19 +15,18 @@ import java.util.Optional;
 /**
  * @ Author NMuchiri
  **/
-@Service
+
 @Slf4j
-@RequiredArgsConstructor
+@Component
 public class CourseDetailsService implements CourseDetailsInterface{
     /*                      GLOBAL VARIABLES                                  */
 
-
-
-    final CourseRepository courseRepo;
+    @Autowired
+    CourseRepository courseRepository;
 
     // Get details given ID
-    public ResponseEntity<Course> findById(int id){
-        Optional<Course> optionalCourse = courseRepo.findById(id);
+    public ResponseEntity<Course> findById(Integer id){
+        Optional<Course> optionalCourse = courseRepository.findById(id);
         if (optionalCourse.isPresent()){
              Course course = optionalCourse.get();
              return new ResponseEntity<>(course, HttpStatus.OK);
@@ -39,15 +38,15 @@ public class CourseDetailsService implements CourseDetailsInterface{
 
     // Get all courses details
     public ResponseEntity<List<Course>> getAllCourses(){
-        return new ResponseEntity<>(courseRepo.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(courseRepository.findAll(), HttpStatus.OK);
     }
 
     // Delete a course
 
-    public ResponseEntity<?> deleteCourse(int id){
-        Optional<Course> optionalCourse = courseRepo.findById(id);
+    public ResponseEntity<?> deleteCourse(Integer id){
+        Optional<Course> optionalCourse = courseRepository.findById(id);
         if (optionalCourse.isPresent()){
-            courseRepo.deleteById(id);
+            courseRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
